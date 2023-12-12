@@ -11,7 +11,7 @@ repository = "https://github.com/penumbra-zone/decaf377-rdsa"
 [dependencies]
 blake2b_simd = "0.5"
 byteorder = "1.3"
-decaf377 = { version = "0.5", default-features = false }
+decaf377 = { version = "0.6", default-features = false }
 digest = "0.9"
 rand_core = "0.6"
 serde = { version = "1", optional = true, features = ["derive"] }
@@ -39,3 +39,6 @@ harness = false
 default = ["serde", "std"]
 std = ["ark-ff/std"]
 parallel = ["ark-ff/parallel", "decaf377/parallel"]
+
+[patch.crates-io]
+decaf377 = { git = "https://github.com/Zondax/decaf377.git", branch = "fix/no_std" }
