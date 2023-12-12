@@ -76,6 +76,7 @@ impl<D: Domain> From<Signature<D>> for [u8; 64] {
     }
 }
 
+#[cfg(feature = "serde")]
 impl<D: Domain> From<Signature<D>> for Vec<u8> {
     fn from(sig: Signature<D>) -> Vec<u8> {
         sig.to_bytes().into()
@@ -99,6 +100,7 @@ impl<D: Domain> TryFrom<&[u8]> for Signature<D> {
     }
 }
 
+#[cfg(feature = "serde")]
 impl<D: Domain> TryFrom<Vec<u8>> for Signature<D> {
     type Error = Error;
 
