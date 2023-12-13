@@ -1,5 +1,12 @@
+#![cfg_attr(not(feature = "std"), no_std)]
 #![doc = include_str!("../README.md")]
 
+#[cfg(feature = "alloc")]
+extern crate alloc;
+
+extern crate no_std_compat as std;
+
+#[cfg(feature = "std")]
 pub mod batch;
 
 mod domain;

@@ -3,6 +3,9 @@ use std::marker::PhantomData;
 
 use crate::{Binding, Domain, Error, SpendAuth};
 
+#[cfg(feature = "serde")]
+use std::vec::Vec;
+
 /// A `decaf377-rdsa` signature.
 #[derive(Copy, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]

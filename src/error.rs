@@ -1,5 +1,7 @@
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
 /// An error related to `decaf377-rdsa` signatures.
 #[derive(Error, Debug, Copy, Clone, Eq, PartialEq)]
 pub enum Error {
@@ -14,5 +16,14 @@ pub enum Error {
     InvalidSignature,
     /// Occurs when reading from a slice of the wrong length.
     #[error("Wrong slice length, expected {expected}, found {found}")]
+    WrongSliceLength { expected: usize, found: usize },
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+pub enum Error {
+    MalformedSigningKey,
+    MalformedVerificationKey,
+    InvalidSignature,
     WrongSliceLength { expected: usize, found: usize },
 }

@@ -9,6 +9,7 @@
 //!
 
 use std::convert::TryFrom;
+use std::vec::Vec;
 
 use ark_ff::Zero;
 use decaf377::{Element, FieldExt, Fr};
@@ -115,6 +116,7 @@ impl Item {
     }
 }
 
+#[cfg(feature = "std")]
 #[derive(Default)]
 /// A batch verification context.
 pub struct Verifier {
@@ -122,6 +124,7 @@ pub struct Verifier {
     signatures: Vec<Item>,
 }
 
+#[cfg(feature = "std")]
 impl Verifier {
     /// Construct a new batch verifier.
     pub fn new() -> Verifier {
